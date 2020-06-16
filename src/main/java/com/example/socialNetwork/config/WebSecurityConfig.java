@@ -26,9 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 				.and()
 			.authorizeRequests()
-				.antMatchers("/loginrest").anonymous()
 				.antMatchers("/", "/loginrest", "/changepass/*", "/changepassword", "/newuser", "/sendemail",
-						"/uploudhoto", "/testauth", "/activate/*", "/images/*", "/temp/*", "/css/*").permitAll()
+						"/uploudhoto", "/testauth", "/activate/*", "/images/*", "/temp/**", "/css/*").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.logout()

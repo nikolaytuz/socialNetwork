@@ -27,9 +27,14 @@ public class FileController {
 				uploadFolder.mkdir();
 			}
 			String uuidFile = UUID.randomUUID().toString();
+			
+			System.out.println(uuidFile);
 			String nameFile = uuidFile + "-" + file.getOriginalFilename();
+			
+			System.out.println(nameFile);
 			file.transferTo(new File(uploadFolder+"/"+nameFile));
 			
+			System.out.println("/temp/"+nameFile);
 			model.put("url", "/temp/"+nameFile);
 		}else {
 			model.put("url", false);

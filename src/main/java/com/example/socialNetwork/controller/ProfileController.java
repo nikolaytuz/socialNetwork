@@ -40,6 +40,7 @@ public class ProfileController {
 			model.put("name", profile.getName());
 			model.put("famile", profile.getFamile());
 			model.put("about", profile.getStatistics());
+			model.put("activated", profile.getActivated());
 		}else {
 			model.put("about", null);
 		}
