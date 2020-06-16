@@ -16,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div class="aler" v-if="aler">
+      Вы не подтвердили почту. Поэтому видите данное окно. Пожалуйста подтвердите.
+    </div>
   </div>
 </template>
 
@@ -54,7 +57,8 @@ export default {
       profileInfo: {},
       myprofile: {},
       posts: [],
-      iduser: null
+      iduser: null,
+      aler: false,
     };
   },
   methods: {
@@ -77,6 +81,9 @@ export default {
       axios.post("/getprofile", {}).then(response => {
         // console.log(response.data);
         this.myprofile = response.data;
+        if (response.data.activated != null) {
+          this.aler = true
+        }
       }).catch(err=>{
         // console.log("Ошибка");
       });
@@ -117,6 +124,18 @@ export default {
 
 
 <style media="screen" scoped>
+.aler{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 98%;
+  height: 100px;
+  background: pink;
+  border-radius: 5px;
+  padding: 32px;
+  text-align: center;
+  font-size: 23px;
+}
 .styk {
   position: sticky;
   top: 13px;
